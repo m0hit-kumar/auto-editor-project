@@ -1,0 +1,7 @@
+function myFunction() {
+  var searchResult
+  searchResult = DocumentApp.getActiveDocument().getBody().findText("very")
+  Logger.log(searchResult)
+                                         
+                                                     
+}
