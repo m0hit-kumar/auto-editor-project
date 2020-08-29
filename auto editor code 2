@@ -1,0 +1,11 @@
+function myFunction() {
+  var searchResult    
+  //search for the text
+  searchResult = DocumentApp.getActiveDocument().getBody().findText("very")
+  Logger.log(searchResult)
+  //change backgroungcolor of the searchedtext 
+  while(searchResult !== null){
+  searchResult.getElement().asText().setBackgroundColor(searchResult.getStartOffset(), searchResult.getEndOffsetInclusive(), "#FF0000")    
+    searchResult = DocumentApp.getActiveDocument().getBody().findText("very",searchResult)
+  }                                                   
+}
