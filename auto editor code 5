@@ -1,0 +1,35 @@
+function findText(item) {
+  //change the random color
+  var background ='#' + (Math.random().toString(16) +"000000").substring(2,8)
+   Logger.log(item)  
+  //search for the text
+     var searchResult  
+   Logger.log(item)  
+
+  searchResult = DocumentApp.getActiveDocument().getBody().findText(item)
+  
+  //change backgroungcolor of the searchedtext 
+  while(searchResult !== null){
+  searchResult.getElement().asText().setBackgroundColor(searchResult.getStartOffset(), searchResult.getEndOffsetInclusive(), background)    
+    searchResult = DocumentApp.getActiveDocument().getBody().findText(item,searchResult)
+  }                                                   
+}
+function higilightproblem(){
+ findText("very")
+ findText("totally")
+
+}
+
+function outArray() {  
+var arr = ["very"," the ", "this", " is "]
+arr.forEach(findText)
+
+
+}
+                                               
+function onOpen(){
+DocumentApp.getUi().createMenu("Make the writing awseome!").addItem("Higilight common mistakes" ,'outArray').addToUi()
+}
+                            
+                            
+                                                           
